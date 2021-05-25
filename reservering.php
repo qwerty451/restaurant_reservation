@@ -1,4 +1,4 @@
-<?php>
+<?php
     include 'framework/database.php';
 ?>
 <html>
@@ -7,11 +7,16 @@
     </head>
     <body>
         <h2>Bons Temps - Reservering Systeem</h2>
-        <form>
-            <label for="fname">First name:</label><br>
-            <input type="text" id="fname" name="fname"><br>
-            <label for="lname">Last name:</label><br>
-            <input type="text" id="lname" name="lname">
-        </form>
+        <a href="maak_klant.php">Maak een nieuwe klant</a><br><br>
+        <label for="cars">Email klant:</label>
+        <select name="email" id="email">
+        <?php
+            $klantenArray = $query->retrieve_all('klant'
+            );
+            foreach ($klantenArray as $klant) {
+                echo "<option value='" . $klant['id'] . "'>" . $klant['email'] . "</option>";
+            }
+        ?>
+        </select>
     </body>
 </html>
